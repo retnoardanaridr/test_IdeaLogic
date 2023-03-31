@@ -1,0 +1,1 @@
+const { QueryTypes } = require('sequelize');
