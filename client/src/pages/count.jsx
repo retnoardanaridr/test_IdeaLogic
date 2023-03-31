@@ -9,25 +9,15 @@ export default function Count() {
         const response = await API.get('/products');
         return response.data.data;
     })
-    console.log(product)
 
     let { data: category } = useQuery('categoryCache', async() => {
         const response = await API.get('/categories');
         return response.data.data;
     })
-    console.log(category)
 
     let { data: price } = useQuery('priceCache', async() => {
         const response = await API.get('/varprices');
         return response.data.data;
-    })
-    console.log("ini harga", price)
-    let harga = price.price
-
-    const [form, setForm] = useState({
-        idCategory: '',
-        idProduct: '',
-        jumlah: '',
     })
 
 
