@@ -15,7 +15,6 @@ export default function Login() {
         email: '',
         password: '',
     })
-    console.log(form)
 
     const handleLogin = useMutation(async (e) => {
         try {
@@ -34,7 +33,7 @@ export default function Login() {
             navigate('/');
         } catch(error) {
             const alert = (
-                <Alert color='failure' className='font-medium'>
+                <Alert color='failure' className='font-medium lg:font-medium'>
                     Failed
                 </Alert>
             )

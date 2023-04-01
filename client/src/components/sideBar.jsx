@@ -11,7 +11,7 @@ export default function SideBar() {
     const Logout = () => {
         dispatch({ type: "LOGOUT" })
         navigate('/')
-      }
+    }
     return (
         <>
             <div className="w-48 md:w-fit">
@@ -23,16 +23,32 @@ export default function SideBar() {
                             >
                                 Dashboard
                             </Sidebar.Item>
-                            <Sidebar.Item
-                                href="/product"
-                            >
-                                Products
-                            </Sidebar.Item>
-                            <Sidebar.Item
-                                href="/categories"
-                            >
-                                Categories
-                            </Sidebar.Item>
+                            {state.user.role === 'user' ? (
+                                <Sidebar.Item
+                                    href="/product"
+                                >
+                                    Products
+                                </Sidebar.Item>
+                            ) : (
+                                <Sidebar.Item
+                                    href="/add-product"
+                                >
+                                    Products
+                                </Sidebar.Item>
+                            )}
+                            {state.user.role === 'user' ? (
+                                <Sidebar.Item
+                                    href="/categories"
+                                >
+                                    Categories
+                                </Sidebar.Item>
+                            ) : (
+                                <Sidebar.Item
+                                    href="/add-category"
+                                >
+                                    Categories
+                                </Sidebar.Item>
+                            )}
                             <Sidebar.Item
                                 href="/count"
                             >

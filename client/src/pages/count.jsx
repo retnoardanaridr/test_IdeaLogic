@@ -20,6 +20,30 @@ export default function Count() {
         return response.data.data;
     })
 
+    const [produk, setProduk] = useState()
+    const [ form, setForm ] = useState({
+        category: '',
+    })
+    console.log("ini", form)
+
+    const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+        });
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const search = product.filter((produk) => {
+            return (
+                (form.category === "" || produk.category === form.category)
+            )
+        });
+        setProduk(search)
+        console.log(produk)
+    }
+
 
     return(
         <>
@@ -31,7 +55,7 @@ export default function Count() {
                         <h1 className="text-white">m zdjndjcmzdkcmzdczczjx c zcasc  sdasdnkadas fza asdhansddnkjSDndvsfvsdsdn</h1>
                         <div>
                             <label htmlFor="category" className="block mt-2 mb-2 text-sm font-medium text-gray-900">Kategori Pekerjaan</label>
-                            <select name="category" id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select onChange={handleChange} name="category" id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 {category?.map((item, index) => (
                                     <option key={index} value={item.id}>{item.name}</option>
                                 ))}
@@ -54,7 +78,7 @@ export default function Count() {
                                 type="number"
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5" />
                         </div>
-                        <Button className="mt-4 w-full">
+                        <Button onClick={(e) => handleSearch(e)} className="mt-4 w-full">
                             count
                         </Button>
                     </form>

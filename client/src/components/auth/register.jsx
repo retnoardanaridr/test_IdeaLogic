@@ -4,8 +4,10 @@ import { useMutation } from 'react-query';
 import { API } from "../../config/api";
 
 import register from '../../assets/register.jpeg';
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -32,7 +34,8 @@ export default function Register() {
                 </Alert>
             )
             setMessage(alert);
-            console.log("register berhasil", response.data.data);
+            console.log(response)
+            navigate('/login');
         } catch (error) {
             const alert = (
                 <Alert color='failure' className='font-medium'>

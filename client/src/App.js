@@ -10,6 +10,8 @@ import Dashboard from './pages/dashboard';
 import Products from './pages/product';
 import Categories from './pages/category';
 import Count from './pages/count';
+import AddProduct from './pages/addProduct';
+import AddCategory from './pages/addCategory';
 
 
 function App() {
@@ -66,6 +68,8 @@ function App() {
         <Route exact path='/product' element={<Products/>} />
         <Route exact path='/categories' element={<Categories/>} />
         <Route exact path='/count' element={<Count/>} />
+        <Route exact path='/add-product' element={<AddProduct/>} />
+        <Route exact path='/add-category' element={<AddCategory/>} />
       </Routes>
     </>
   );
